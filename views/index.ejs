@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Hello to the homepage</h1>
+    <% if (locals.currentUser) {%>
+        <p>Hello <%= currentUser.first_name %> youre logged in!</p>
+    <% } %>
+    <section>
+        <p><a href="/auth/sign-up">Don't have an account? Sign up</a></p>
+        <p><a href="/auth/log-in">Already have an account? Log in</a></p>
+    </section>
+</body>
+</html>

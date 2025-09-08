@@ -7,35 +7,20 @@
 </head>
 <body>
     <div class="container">
-        <h1>Get Membership to our exclusive Clubhouse!</h1>
+        <h1>Join the Clubhouse</h1>
         
-        <% if (typeof success !== 'undefined') { %>
-            <div class="success">
-                <p><%= success %></p>
-            </div>
-        <% } %>
+        <%- include('../partials/_messages') %>
         
-        <% if (typeof error !== 'undefined') { %>
-            <div class="error">
-                <p><%= error %></p>
-            </div>
-        <% } %>
-        
-        <form action="/auth/login" method="POST">
+        <form action="/auth/join-club" method="POST">
             <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="email" id="email" name="email" required>
+                <label for="passcode">Secret Passcode:</label>
+                <input type="password" id="passcode" name="passcode" required>
             </div>
             
-            <div class="form-group">
-                <label for="password">Password:</label>
-                <input type="password" id="password" name="password" required>
-            </div>
-            
-            <button type="submit">Log In</button>
+            <button type="submit">Join Club</button>
         </form>
         
-        <p><a href="/auth/sign-up">Don't have an account? Sign up</a></p>
+        <p><a href="/">Go back</a></p>
     </div>
 </body>
 </html>

@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Error - Clubhouse</title>
+</head>
+<body>
+    <div class="container">
+        <h1>Oops! Something Went Wrong.</h1>
+        <p>We're sorry, but an unexpected error occurred.</p>
+        
+        <% if (typeof message !== 'undefined' && message) { %>
+            <div class="error-details">
+                <p><strong>Error Message:</strong> <%= message %></p>
+            </div>
+        <% } %>
+
+        <p><a href="/">Go to Homepage</a></p>
+    </div>
+</body>
+</html>

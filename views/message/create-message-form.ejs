@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title><%= title %></title>
+</head>
+<body>
+    <div class="container">
+        <h1>Create New Message</h1>
+        
+        <%- include('../partials/_messages') %>
+        
+        <form action="/messages/create" method="POST">
+            <div class="form-group">
+                <label for="title">Title:</label>
+                <input type="text" id="title" name="title" 
+                       value="<%= typeof message !== 'undefined' ? message.title || '' : '' %>"
+                       required maxlength="200">
+            </div>
+            
+            <div class="form-group">
+                <label for="content">Message:</label>
+                <textarea id="content" name="content" required>
+<%= typeof message !== 'undefined' ? message.content || '' : '' %></textarea>
+            </div>
+            
+            <button type="submit">Post Message</button>
+        </form>
+        
+        <p class="go-back-link"><a href="/">Go back to Home</a></p>
+    </div>
+</body>
+</html>

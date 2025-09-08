@@ -1,0 +1,29 @@
+<% // This partial will display all types of messages %>
+
+<% if (typeof error !== 'undefined' && error) { %>
+    <div class="error-message">
+        <p><%= error %></p>
+    </div>
+<% } %>
+
+<% if (typeof errors !== 'undefined' && errors.length > 0) { %>
+    <div class="error-message">
+        <ul>
+            <% errors.forEach(err => { %>
+                <li><%= err.msg %></li>
+            <% }); %>
+        </ul>
+    </div>
+<% } %>
+
+<% if (typeof success !== 'undefined' && success) { %>
+    <div class="success-message">
+        <p><%= success %></p>
+    </div>
+<% } %>
+
+<% if (typeof message !== 'undefined' && message) { %>
+    <div class="info-message">
+        <p><%= message %></p>
+    </div>
+<% } %>
