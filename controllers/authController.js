@@ -79,16 +79,42 @@ exports.signUpUser = [
 
 // GET login form
 exports.getLogin = (req, res) => {
-  res.render('auth/login', {
+  const message = req.query.message;
+  res.render('auth/log-in', {
     title: 'Log In - Clubhouse',
+    message: message,
   });
 };
 
-// GET membership form
+// GET join club form
 exports.getJoinClub = (req, res) => {
+  if (req.user.is_member) {
+    return res.redirect('/');
+  }
   res.render('auth/join-club', {
-    title: 'Get Membership - Clubhouse',
+    title: 'Join the Club',
   });
+};
+
+// POST join club
+exports.joinClub = async (req, res, next) => {
+  try {
+    const { passcode } = req.body;
+
+    if (passcode === process.env.MEMBER_PASSCODE) {
+      await userQueries.updateMembershipStatus(req.user.id, true);
+      // Update current user object
+      req.user.is_member = true;
+      res.redirect('/');
+    } else {
+      res.render('auth/join-club', {
+        title: 'Join the Club',
+        error: 'Incorrect passcode',
+      });
+    }
+  } catch (error) {
+    next(error);
+  }
 };
 
 // GET Logout
