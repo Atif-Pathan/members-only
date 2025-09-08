@@ -9,7 +9,7 @@ const requireAuth = (req, res, next) => {
   if (req.isAuthenticated && req.isAuthenticated()) {
     return next();
   }
-  res.redirect('/auth/sign-up');
+  res.redirect('/auth/log-in?message=You need to be logged in to access this page.');
 };
 
 // Require membership
@@ -17,7 +17,7 @@ const requireMember = (req, res, next) => {
   if (req.isAuthenticated && req.isAuthenticated() && req.user.is_member) {
     return next();
   }
-  res.redirect('/auth/join-club');
+  res.redirect('/auth/join-club?message=You need to be a member to access this page.');
 };
 
 // Require admin
